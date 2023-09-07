@@ -39,7 +39,7 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d("Wijk", email)
             } else {
                 Toast.makeText(this, "Please fill out every field!", Toast.LENGTH_LONG).show()
-                Log.d("Wijk", "Empty field")
+                Log.d("Wijk", "Empty field!")
             }
         }
     }
