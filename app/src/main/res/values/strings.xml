@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LifecycleV3</string>
+    <string name="registerBtn">Register</string>
+    <string name="loginBtn">Login</string>
+    <string name="emailInput">Email</string>
+    <string name="passwordInput">Password</string>
+    <string name="personnummerInput">Personnummer</string>
+    <string name="addressInput">address</string>
+    <string name="nameInput">Name</string>
+    <string name="loginRegisterBtn">No account? Click here to register!</string>
+</resources>
