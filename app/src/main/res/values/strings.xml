@@ -5,7 +5,7 @@
     <string name="emailInput">Email</string>
     <string name="passwordInput">Password</string>
     <string name="personnummerInput">Personnummer</string>
-    <string name="addressInput">address</string>
+    <string name="addressInput">Address</string>
     <string name="nameInput">Name</string>
     <string name="loginRegisterBtn">No account? Click here to register!</string>
 </resources>

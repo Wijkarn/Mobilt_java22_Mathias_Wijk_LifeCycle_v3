@@ -40,6 +40,9 @@ class RegisterActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Please fill out every field!", Toast.LENGTH_LONG).show()
                 Log.d("Wijk", "Empty field!")
+
+                val firebase = Firebase()
+                firebase.firebaseGet(this)
             }
         }
     }
