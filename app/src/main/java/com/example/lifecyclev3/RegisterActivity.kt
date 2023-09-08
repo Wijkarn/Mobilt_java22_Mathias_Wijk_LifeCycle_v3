@@ -28,21 +28,20 @@ class RegisterActivity : AppCompatActivity() {
             val personnummerInput = findViewById<View>(R.id.regInputPersonnummer) as EditText
             val personnummer: String = personnummerInput.text.toString()
 
+            val phoneInput = findViewById<View>(R.id.regInputPhone) as EditText
+            val phone: String = phoneInput.text.toString()
+
             val emailInput = findViewById<View>(R.id.regInputEmail) as EditText
             val email: String = emailInput.text.toString()
 
-            if (name.isNotEmpty() && password.isNotEmpty() && address.isNotEmpty() && personnummer.isNotEmpty() && email.isNotEmpty()) {
-                Log.d("Wijk", name)
-                Log.d("Wijk", password)
-                Log.d("Wijk", address)
-                Log.d("Wijk", personnummer)
-                Log.d("Wijk", email)
+            if (name.isNotEmpty() && password.isNotEmpty() && address.isNotEmpty() && personnummer.isNotEmpty() && email.isNotEmpty() && phone.isNotEmpty()) {
+                Firebase().firebasePost(this, User(personnummer, password, email, address, phone, name), null)
             } else {
                 Toast.makeText(this, "Please fill out every field!", Toast.LENGTH_LONG).show()
                 Log.d("Wijk", "Empty field!")
 
-                val firebase = Firebase()
-                firebase.firebaseGet(this)
+                //val firebase = Firebase()
+                //firebase.firebaseGet(this)
             }
         }
     }
