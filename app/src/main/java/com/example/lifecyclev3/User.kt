@@ -7,6 +7,7 @@ class User {
     var address = ""
     var phone = ""
     var name = ""
+    var driverslicense : Boolean = false
 
     constructor()
 
@@ -21,7 +22,8 @@ class User {
         email: String,
         address: String,
         phone: String,
-        name: String
+        name: String,
+        driverslicense: Boolean
     ){
         this.personnummer = personnummer
         this.password = password
@@ -29,5 +31,6 @@ class User {
         this.address = address
         this.phone = phone
         this.name = name
+        this.driverslicense = driverslicense
     }
 }

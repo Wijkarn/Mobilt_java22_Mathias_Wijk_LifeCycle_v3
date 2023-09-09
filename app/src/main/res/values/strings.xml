@@ -9,4 +9,9 @@
     <string name="nameInput">Name</string>
     <string name="phoneInput">Phone</string>
     <string name="loginRegisterBtn">No account? Click here to register!</string>
+    <string name="yesBtn">Yes</string>
+    <string name="noBtn">No</string>
+    <string name="editProfileBtn">Edit</string>
+    <string name="editBtn">Update</string>
+    <string name="editChoiceText">What do you want to update?</string>
 </resources>

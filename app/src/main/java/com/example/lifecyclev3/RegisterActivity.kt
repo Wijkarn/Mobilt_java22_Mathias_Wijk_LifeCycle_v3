@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -34,14 +36,21 @@ class RegisterActivity : AppCompatActivity() {
             val emailInput = findViewById<View>(R.id.regInputEmail) as EditText
             val email: String = emailInput.text.toString()
 
-            if (name.isNotEmpty() && password.isNotEmpty() && address.isNotEmpty() && personnummer.isNotEmpty() && email.isNotEmpty() && phone.isNotEmpty()) {
-                Firebase().firebasePost(this, User(personnummer, password, email, address, phone, name), null)
+            val dLRadioGroup: RadioGroup = findViewById(R.id.radioGroup)
+            val dLCheckedRadioButtonId = dLRadioGroup.checkedRadioButtonId
+
+            if (name.isNotEmpty() && password.isNotEmpty() && address.isNotEmpty() && personnummer.isNotEmpty() && email.isNotEmpty() && phone.isNotEmpty() && dLCheckedRadioButtonId != -1) {
+                val checkedRadioButton = findViewById<RadioButton>(dLCheckedRadioButtonId)
+                val checkedText = checkedRadioButton.text.toString()
+                val license = checkedText == "yes"
+
+                Firebase().firebasePUT(
+                    this,
+                    User(personnummer, password, email, address, phone, name, license)
+                )
             } else {
                 Toast.makeText(this, "Please fill out every field!", Toast.LENGTH_LONG).show()
                 Log.d("Wijk", "Empty field!")
-
-                //val firebase = Firebase()
-                //firebase.firebaseGet(this)
             }
         }
     }

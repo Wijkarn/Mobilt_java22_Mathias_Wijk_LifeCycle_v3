@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -34,22 +35,34 @@ class LoginActivity : AppCompatActivity() {
         val passwordInput = findViewById<View>(R.id.loginPassword) as EditText
         val password: String = passwordInput.text.toString()
 
-        var user = User()
-        user.personnummer = "199405062222" //199405062222
-        user.password = "DuaFan123" //DuaFan123
-        //user.personnummer = personnummer //199405062222
-        //user.password = password //DuaFan123
+        val user = User()
+        user.personnummer = personnummer //199405062222
+        user.password = password //DuaFan123
 
-        user = Firebase().firebaseGet(this, user)
-        if (user.personnummer.isNotEmpty()) {
-            Log.d("Wijk", "Success")
-            val sharedPreferences = this.getSharedPreferences("user", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putBoolean("isLoggedIn", true)
-            editor.apply()
+        val user2 = Firebase().firebaseGet(this, user)
+        Log.d("checkLogin", user2.toString())
+        if (user2.personnummer.isNotEmpty() && user2.password.isNotEmpty()) {
+            //storeLocally(user2)
+
+            Toast.makeText(this, "Login Successful!", Toast.LENGTH_LONG).show()
             super.onBackPressed()
         } else {
             Log.d("Wijk", "Failed")
+            Toast.makeText(this, "Login Failed!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun storeLocally(user: User) {
+        val sharedPreferences = this.getSharedPreferences("user", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("isLoggedIn", true)
+        editor.putString("personnummer", user.personnummer)
+        editor.putString("email", user.email)
+        editor.putString("name", user.name)
+        editor.putString("password", user.password)
+        editor.putString("address", user.address)
+        editor.putString("phone", user.phone)
+        editor.putBoolean("driverslicense", user.driverslicense)
+        editor.apply()
     }
 }
