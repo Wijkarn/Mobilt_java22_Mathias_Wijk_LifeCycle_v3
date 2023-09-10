@@ -83,8 +83,9 @@ class EditProfileActivity : AppCompatActivity() {
                     if (phone != null) user.phone = input
                 }
             }
-            Log.d("Wijk", user.email)
             Firebase().firebasePUT(this, user)
+            Toast.makeText(this, "Successfully updated $checkedText!", Toast.LENGTH_LONG).show()
+            super.onBackPressed()
         } else {
             Toast.makeText(this, "Please select an option!", Toast.LENGTH_LONG).show()
         }
